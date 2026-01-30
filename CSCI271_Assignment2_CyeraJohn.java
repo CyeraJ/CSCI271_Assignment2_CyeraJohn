@@ -42,8 +42,31 @@ public class CSCI271_Assignment2_CyeraJohn { /* obtained from course notes */
 * Called by: n/a
 * Calls: n/a
 ************************************************************************/
+<<<<<<< HEAD
 	public static void main(String[] args) { //obtained from course notes
 		Scanner input = new Scanner(System.in);
 		new Fraction (6, -24);
+=======
+	private long numerator;
+	private long deenominator;
+//instead of using numerator, u always use getNumerator() instead do this for extra credit :-D
+	public Fraction(long num, long denom){ /*constuctor*/
+
+/* return reduction here, don't do it in method functions (the add or subtract functions) */
+	} 
+
+	public long getNumerator(){
+		/* logic here */
+	}
+
+	public long getDenominator(){
+		/* logic here */
+	}
+
+
+	
+	/*public static void main(String[] args) { //obtained from course notes
+	Scanner input = new Scanner(System.in);*/
+>>>>>>> refs/remotes/origin/main
 	}
 }
