@@ -45,22 +45,33 @@ public class CSCI271_Assignment2_CyeraJohn { /* obtained from course notes */
 	private long numerator;
 	private long denominator;
 //instead of using numerator, u always use getNumerator() instead do this for extra credit :-D
-	public Fraction(long num, long denom){ /*constuctor*/
-
-/* return reduction here, don't do it in method functions (the add or subtract functions) */
-	} 
-
-	public long getNumerator(){
-		/* logic here */
-	}
-
-	public long getDenominator(){
-		/* logic here */
-	}
-
-
+	public long CSCI271_Assignment2_CyeraJohn (long num, long denom, long remainder){ /*constuctor*/
+		if ( num < 0 ) {
+			num = -num; // to avoid sign problems
+			while (denom != 0) {
+				remainder = num % denom;
+				num = denom;
+				denom = remainder;
+			}
 	
-	/*public static void main(String[] args) { //obtained from course notes
-	Scanner input = new Scanner(System.in);*/
+		}
+		if (num == 0) {
+			num = 1;
+/* return reduction here, don't do it in method functions (the add or subtract functions) */
+		} 
+		return num;
 	}
 }
+/*
+	public long getNumerator(){
+		/* logic here */	
+/*	}
+
+/*	public long getDenominator(){
+		/* logic here */
+/*	}
+}
+	/*public static void main(String[] args) { //obtained from course notes
+	Scanner input = new Scanner(System.in);*/
+	
+
