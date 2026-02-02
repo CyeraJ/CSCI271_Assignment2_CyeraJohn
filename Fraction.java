@@ -27,7 +27,7 @@
 ********************************************************************/
 import java.util.Scanner; //obtained from course notes
 
-public class fraction { /* obtained from course notes */
+public class Fraction { /* obtained from course notes */
 /*****************************<main>****************************
 * Description: the main function of the code takes in arguements.
 *
@@ -46,7 +46,7 @@ public class fraction { /* obtained from course notes */
 	private long denominator;
 	private long remainder;
 //instead of using numerator, u always use getNumerator() instead do this for extra credit :-D
-	public long fraction (long num, long denom){ /*constuctor*/
+	public long Fraction (long num, long denom){ /*constuctor*/
 		if ( num < 0 ) {
 			num = -num; // to avoid sign problems
 			while (denom != 0) {
@@ -75,10 +75,10 @@ public class fraction { /* obtained from course notes */
 /*	public long getDenominator() {
 		/* logic here } */ 
 
-	public static void main(String[] args) { 
-		fraction a = new fraction(6,-24);
-		System.out.println(a);
-	}//obtained from course notes */
+//	public static void main(String[] args) { 
+//		Fraction a = new Fraction(6,-24);
+//		System.out.println(a);
+//	}//obtained from course notes */
 
 	
 
