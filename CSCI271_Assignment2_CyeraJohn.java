@@ -44,8 +44,9 @@ public class CSCI271_Assignment2_CyeraJohn { /* obtained from course notes */
 ************************************************************************/
 	private long numerator;
 	private long denominator;
+	private long remainder;
 //instead of using numerator, u always use getNumerator() instead do this for extra credit :-D
-	public long CSCI271_Assignment2_CyeraJohn (long num, long denom, long remainder){ /*constuctor*/
+	public long CSCI271_Assignment2_CyeraJohn (long num, long denom){ /*constuctor*/
 		if ( num < 0 ) {
 			num = -num; // to avoid sign problems
 			while (denom != 0) {
@@ -62,16 +63,22 @@ public class CSCI271_Assignment2_CyeraJohn { /* obtained from course notes */
 		return num;
 	}
 }
+/*	public long setfraction () {
+		return
+	}
+}*/
 /*
 	public long getNumerator(){
 		/* logic here */	
 /*	}
 
-/*	public long getDenominator(){
-		/* logic here */
-/*	}
-}
-	/*public static void main(String[] args) { //obtained from course notes
-	Scanner input = new Scanner(System.in);*/
+/*	public long getDenominator() {
+		/* logic here } */ 
+
+	public static void main(String[] args) { 
+		CI271_Assignment2_CyeraJohn a = new CI271_Assignment2_CyeraJohn(6,-24);
+		System.out.println(1);
+	}//obtained from course notes */
+
 	
 
