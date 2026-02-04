@@ -25,8 +25,6 @@
 *
 * Cyera John
 ********************************************************************/
-import java.util.Scanner; //obtained from course notes
-
 public class Fraction { /* obtained from course notes */
 /*****************************<main>****************************
 * Description: the main function of the code takes in arguements.
@@ -42,43 +40,68 @@ public class Fraction { /* obtained from course notes */
 * Called by: n/a
 * Calls: n/a
 ************************************************************************/
-	private long numerator;
-	private long denominator;
+	private long num;
+	private long denom;
 	private long remainder;
 //instead of using numerator, u always use getNumerator() instead do this for extra credit :-D
-	public long Fraction (long num, long denom){ /*constuctor*/
+	public Fraction (long num, long denom){ /*constuctor*/
 		if ( num < 0 ) {
 			num = -num; // to avoid sign problems
-			while (denom != 0) {
-				remainder = num % denom;
-				num = denom;
-				denom = remainder;
-			}
-	
 		}
-		if (num == 0) {
-			num = 1;
-/* return reduction here, don't do it in method functions (the add or subtract functions) */
-		} 
-		return num;
+		if (num == 0) { //if numerator is 0 then the fraction will have a 0/1
+			num = 0;
+			denom = 1;
+		}
+		if (denom < 0) { // for fractions denominators have to be positive so this ensures that
+			num = -num;
+			denom = -denom;
+		}
+		this.num = num;
+		this.denom = denom;
+
+		setfraction(num,denom);
+	} 
+	//constructor that creates the fraction a/1
+	public Fraction (long x) {
+		num = x;
+		denom = 1;
 	}
-}
-/*	public long setfraction () {
-		return
+//GCD method
+	public long gcd(long x, long y) {
+
+		while (y != 0) {
+				remainder = x % y;
+				x = y;
+				y = remainder;
+			}
+		return x;
 	}
-}*/
-/*
+//setter method to reduce fraction
+	public void setfraction(long num, long denom) {
+		
+		this.num = num / gcd(num, denom);
+		this.denom = denom / gcd(num, denom);
+	}
+
+	public String toString() {
+		return num + "/" + denom;
+	}
+	//getter function to get numerator
 	public long getNumerator(){
-		/* logic here */	
-/*	}
+		return num;	
+	}
+	//getter function to get denominator
+	public long getDenominator() {
+		return denom; 
+ 	}
 
-/*	public long getDenominator() {
-		/* logic here } */ 
+	public static void main(String[] args) { 
+		Fraction a = new Fraction(6,-24);
+		System.out.println(a);
+	} 
+}
 
-//	public static void main(String[] args) { 
-//		Fraction a = new Fraction(6,-24);
-//		System.out.println(a);
-//	}//obtained from course notes */
+	 
 
 	
 
