@@ -52,14 +52,16 @@ public class Fraction { /* obtained from course notes */
 			num = 0;
 			denom = 1;
 		}
-		if (denom < 0) { // for fractions denominators have to be positive so this ensures that
-			num = -num;
-			denom = -denom;
+		// this is the reduction part using the gcd
+		this.num = num / gcd(num, denom);
+		this.denom = denom / gcd(num, denom);
+		//ensures denominator is positive after the reduction
+		if (this.denom < 0) {
+   			this.num = -this.num;
+    		this.denom = -this.denom;
 		}
-		this.num = num;
-		this.denom = denom;
 
-		setfraction(num,denom);
+		
 	} 
 	//constructor that creates the fraction a/1
 	public Fraction (long x) {
@@ -68,19 +70,13 @@ public class Fraction { /* obtained from course notes */
 	}
 //GCD method
 	public long gcd(long x, long y) {
-
+		
 		while (y != 0) {
 				remainder = x % y;
 				x = y;
 				y = remainder;
 			}
 		return x;
-	}
-//setter method to reduce fraction
-	public void setfraction(long num, long denom) {
-		
-		this.num = num / gcd(num, denom);
-		this.denom = denom / gcd(num, denom);
 	}
 
 	public String toString() {
@@ -97,7 +93,9 @@ public class Fraction { /* obtained from course notes */
 
 	public static void main(String[] args) { 
 		Fraction a = new Fraction(6,-24);
+		Fraction b = new Fraction( 0,8 );
 		System.out.println(a);
+		System.out.println(b);
 	} 
 }
 
