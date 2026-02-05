@@ -80,7 +80,21 @@ public class Fraction { /* obtained from course notes */
 	}
 
 	public String toString() {
-		return num + "/" + denom;
+		if (denom == 0 & num > 0) {
+			return "Infinity"; 
+		}
+		else if (denom == 0 & num < 0) {
+			return "-Infinity";
+		}
+		else if (denom == 1 & num > 0) {
+			return num + " (not " + num + "/1 )";
+		}
+		else if (denom == 0 & num == 0) {
+			return "NaN";
+		}
+		else {
+		return num + "/" + denom; //makes sure output is in proper fraction form
+		}
 	}
 	//getter function to get numerator
 	public long getNumerator(){
@@ -96,7 +110,22 @@ public class Fraction { /* obtained from course notes */
 		Fraction b = new Fraction( 0,8 );
 		System.out.println(a);
 		System.out.println(b);
-	} 
+
+		Fraction c = new Fraction(8, -6);
+		System.out.println(c);
+
+		Fraction d = new Fraction(23, 0);
+		System.out.println(d);
+
+		Fraction e = new Fraction(-6, 0);
+		System.out.println(e);
+
+		Fraction f = new Fraction(7, 1);
+		System.out.println(f);
+
+		Fraction g = new Fraction(0, 0);
+		System.out.println(g);
+	}
 }
 
 	 
