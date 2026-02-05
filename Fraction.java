@@ -81,7 +81,7 @@ public class Fraction { /* obtained from course notes */
 		if (x == 0) return 1; //for cases where both values are 0 if I return 1 allows for Nan to produce for task 2, return 0 crashes it
 		return x;
 	}
-
+	@Override
 	public String toString() {
 		if (denom == 0 && num > 0) {
 			return "Infinity"; 
@@ -108,6 +108,12 @@ public class Fraction { /* obtained from course notes */
 		return denom; 
  	}
 
+	//add function
+	public Fraction add(Fraction l) {
+		long top = this.num + l.num;
+		long bot = this.denom + l.denom;
+		return new Fraction(top,bot);
+	}
 	public static void main(String[] args) { 
 		Fraction a = new Fraction(6,-24);
 		Fraction b = new Fraction( 0,8 );
@@ -128,6 +134,10 @@ public class Fraction { /* obtained from course notes */
 
 		Fraction g = new Fraction(0, 0);
 		System.out.println(g);
+
+		Fraction h = new Fraction(16);
+		Fraction i = new Fraction(3,5).add(new Fraction(7));
+		System.out.println(i);
 	}
 }
 
