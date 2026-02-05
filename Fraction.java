@@ -43,19 +43,20 @@ public class Fraction { /* obtained from course notes */
 	private long num;
 	private long denom;
 	private long remainder;
-//instead of using numerator, u always use getNumerator() instead do this for extra credit :-D
-	public Fraction (long num, long denom){ /*constuctor*/
-		if ( num < 0 ) {
-			num = -num; // to avoid sign problems
-		}
-		if (num == 0) { //if numerator is 0 then the fraction will have a 0/1
+
+	public Fraction (long num, long denom){ // creates fractions in a/b reduced and normalized form
+		/*if ( num < 0 ) {
+			num = -num; // to avoid sign problems 
+		} */
+		/*if (num == 0) { //if numerator is 0 then the fraction will have a 0/1
 			num = 0;
 			denom = 1;
-		}
-		// this is the reduction part using the gcd
+		} */
+		// this is the reduction part using the gcd, it the takes difference of num and gcd of the num & denominator to get the reduced form
 		this.num = num / gcd(num, denom);
 		this.denom = denom / gcd(num, denom);
-		//ensures denominator is positive after the reduction
+
+		// if statement ensures denominator is positive after the reduction by flipping both signs if denom is negative
 		if (this.denom < 0) {
    			this.num = -this.num;
     		this.denom = -this.denom;
@@ -68,28 +69,30 @@ public class Fraction { /* obtained from course notes */
 		num = x;
 		denom = 1;
 	}
-//GCD method
-	public long gcd(long x, long y) {
-		
+//GCD method to normalize fractions
+	public long gcd(long x, long y) { //below flips signs so it doesn't mess up the normalization if x and y are less than 0
+		if (x < 0) x = -x; 
+    	if (y < 0) y = -y;
 		while (y != 0) {
 				remainder = x % y;
 				x = y;
 				y = remainder;
 			}
+		if (x == 0) return 1; //for cases where both values are 0 if I return 1 allows for Nan to produce for task 2, return 0 crashes it
 		return x;
 	}
 
 	public String toString() {
-		if (denom == 0 & num > 0) {
+		if (denom == 0 && num > 0) {
 			return "Infinity"; 
 		}
-		else if (denom == 0 & num < 0) {
+		else if (denom == 0 && num < 0) {
 			return "-Infinity";
 		}
-		else if (denom == 1 & num > 0) {
-			return num + " (not " + num + "/1 )";
+		else if (denom == 1 && num > 0) {
+			return num + "";
 		}
-		else if (denom == 0 & num == 0) {
+		else if (denom == 0 && num == 0) {
 			return "NaN";
 		}
 		else {
