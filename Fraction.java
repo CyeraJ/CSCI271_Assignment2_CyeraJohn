@@ -45,13 +45,7 @@ public class Fraction { /* obtained from course notes */
 	private long remainder;
 
 	public Fraction (long num, long denom){ // creates fractions in a/b reduced and normalized form
-		/*if ( num < 0 ) {
-			num = -num; // to avoid sign problems 
-		} */
-		/*if (num == 0) { //if numerator is 0 then the fraction will have a 0/1
-			num = 0;
-			denom = 1;
-		} */
+		
 		// this is the reduction part using the gcd, it the takes difference of num and gcd of the num & denominator to get the reduced form
 		this.num = num / gcd(num, denom);
 		this.denom = denom / gcd(num, denom);
@@ -110,10 +104,42 @@ public class Fraction { /* obtained from course notes */
 
 	//add function
 	public Fraction add(Fraction l) {
-		long top = this.num + l.num;
-		long bot = this.denom + l.denom;
+		long top = this.num * l.denom + l.num * this.denom; //multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions
+		long bot = this.denom * l.denom; //create a common denominator to add fractions
+		return new Fraction(top,bot); //return new fraction
+	}
+
+	public Fraction subtract(Fraction l) {
+		long top = this.num * l.denom - l.num * this.denom;//multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions;chicken butt
+		long bot = this.denom * l.denom;
 		return new Fraction(top,bot);
 	}
+
+	public Fraction multiply(Fraction l) {
+		long top = this.num * l.num; //multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions
+		long bot = this.denom * l.denom; //create a common denominator to add fractions
+		return new Fraction(top,bot); //return new fraction
+	}
+
+	public Fraction divide(Fraction l) {
+		long top = this.num * l.denom; //multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions
+		long bot = this.denom * l.num; //create a common denominator to add fractions
+		return new Fraction(top,bot); //return new fraction
+	}
+
+	public Fraction negate(Fraction l){
+		return new Fraction(-num,denom);
+	}
+
+	public Fraction pow(int n){
+		n = (int) num;
+		long a = 1;
+		long b = 1;
+		a = a *= num;
+		b = b *= denom;
+		return new Fraction(a,b);
+	} 
+
 	public static void main(String[] args) { 
 		Fraction a = new Fraction(6,-24);
 		Fraction b = new Fraction( 0,8 );
@@ -135,9 +161,20 @@ public class Fraction { /* obtained from course notes */
 		Fraction g = new Fraction(0, 0);
 		System.out.println(g);
 
+		Fraction o = new Fraction(1,2).pow(2);
+		System.out.println(o);
+
+		Fraction s = new Fraction(1,2).negate(new Fraction (1));
+		System.out.println(s);
+
 		Fraction h = new Fraction(16);
 		Fraction i = new Fraction(3,5).add(new Fraction(7));
-		System.out.println(i);
+		Fraction j = new Fraction(6,7);
+		Fraction results = j.multiply(h.divide(i));
+		System.out.println(results);
+
+		Fraction t = new Fraction(3,5).subtract(new Fraction(7));
+		System.out.println(t);
 	}
 }
 
