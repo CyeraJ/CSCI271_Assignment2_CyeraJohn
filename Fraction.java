@@ -6,7 +6,7 @@
 * Compiler: javac 21.0.9
 * Date: January 27, 2026
 *
-* Purpose
+* Purpose: create and use the fraction class for different math operations. Teaches us classes and methods.
 *
 *************************************************************************/
 /*******************************************************************
@@ -25,22 +25,9 @@
 *
 * Cyera John
 ********************************************************************/
-public class Fraction { /* obtained from course notes */
-/*****************************<main>****************************
-* Description: the main function of the code takes in arguements.
-*
-* Parameters: arguements
-*
-* Pre: class has to be made before anything
-*
-* Post: main code will have finished running as long as bracket is closed.
-*
-* Returns: nothing it is void.
-*
-* Called by: n/a
-* Calls: n/a
-************************************************************************/
-	private long num;
+public class Fraction { /* obtained from course notes class name */
+	//below sets variables to private
+	private long num; 
 	private long denom;
 	private long remainder;
 
@@ -77,16 +64,16 @@ public class Fraction { /* obtained from course notes */
 	}
 	@Override //course notes
 	public String toString() { //method to output strings based on certain cases
-		if (denom == 0 && num > 0) { // outputs infinity
+		if (denom == 0 && num > 0) { // outputs infinity if denom = 0 and num is > 0
 			return "Infinity"; 
 		}
-		else if (denom == 0 && num < 0) { //outputs -infinity
+		else if (denom == 0 && num < 0) { //outputs -infinity if num is < 0 and denom is 0
 			return "-Infinity";
 		}
-		else if (denom == 1 && num > 0) {
+		else if (denom == 1 && num > 0) { //outputs the whole number if denom is 1
 			return num + "";
 		}
-		else if (denom == 0 && num == 0) {
+		else if (denom == 0 && num == 0) { //outputs nan if both num and denom are 0
 			return "NaN";
 		}
 		else {
@@ -142,7 +129,20 @@ public class Fraction { /* obtained from course notes */
     	}
 		return new Fraction(a,b); //returns new fraction raised to the nth power
 	} 
-	//main method
+/*****************************<main>****************************
+* Description: the main method of the code takes in arguements.
+*
+* Parameters: arguements
+*
+* Pre: class has to be made before anything
+*
+* Post: main code will have finished running as long as bracket is closed.
+*
+* Returns: nothing it is void.
+*
+* Called by: n/a
+* Calls: n/a
+************************************************************************/	
 	public static void main(String[] args) { 
 		Fraction a = new Fraction(6,-24); //for task 1 this outputs fractions reduced and normalized given the above constructor is correct 
 		Fraction b = new Fraction( 0,8 ); //same as above, should return a reduce & normalized fraction
