@@ -75,12 +75,12 @@ public class Fraction { /* obtained from course notes */
 		if (x == 0) return 1; //for cases where both values are 0 if I return 1 allows for Nan to produce for task 2, return 0 crashes it
 		return x;
 	}
-	@Override
-	public String toString() {
-		if (denom == 0 && num > 0) {
+	@Override //course notes
+	public String toString() { //method to output strings based on certain cases
+		if (denom == 0 && num > 0) { // outputs infinity
 			return "Infinity"; 
 		}
-		else if (denom == 0 && num < 0) {
+		else if (denom == 0 && num < 0) { //outputs -infinity
 			return "-Infinity";
 		}
 		else if (denom == 1 && num > 0) {
@@ -95,89 +95,89 @@ public class Fraction { /* obtained from course notes */
 	}
 	//getter function to get numerator
 	public long getNumerator(){
-		return num;	
+		return num;	//returns given numerator
 	}
 	//getter function to get denominator
 	public long getDenominator() {
-		return denom; 
+		return denom; //returns given denominator
  	}
 
-	//add function
+	//add method
 	public Fraction add(Fraction l) {
 		long top = this.num * l.denom + l.num * this.denom; //multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions
 		long bot = this.denom * l.denom; //create a common denominator to add fractions
 		return new Fraction(top,bot); //return new fraction
 	}
-
+	//subtract method
 	public Fraction subtract(Fraction l) {
-		long top = this.num * l.denom - l.num * this.denom;//multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions;chicken butt
-		long bot = this.denom * l.denom;
-		return new Fraction(top,bot);
+		long top = this.num * l.denom - l.num * this.denom;//multiply num and denom by difference of new denom and num for the numerator necessary when you subtract fractions;
+		long bot = this.denom * l.denom; //create a common denominator to subtract fractions
+		return new Fraction(top,bot); //returns new fraction
 	}
-
+	//multiplication method
 	public Fraction multiply(Fraction l) {
-		long top = this.num * l.num; //multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions
-		long bot = this.denom * l.denom; //create a common denominator to add fractions
+		long top = this.num * l.num; //multiply original num by given numerator
+		long bot = this.denom * l.denom; //multiply original denom by given denominator
 		return new Fraction(top,bot); //return new fraction
 	}
-
+	//division method
 	public Fraction divide(Fraction l) {
-		long top = this.num * l.denom; //multiply num and denom by sum of new denom and num for the numerator necessary when you add fractions
-		long bot = this.denom * l.num; //create a common denominator to add fractions
+		long top = this.num * l.denom; //multiply original num by given denom
+		long bot = this.denom * l.num; //multiply original denom by given num
 		return new Fraction(top,bot); //return new fraction
 	}
-
+	//negate method
 	public Fraction negate(Fraction l){
-		return new Fraction(-num,denom);
+		return new Fraction(-num,denom); //returns the same fraction but the negation of it like 1/2 would become -1/2
 	}
-
+	//power method
 	public Fraction pow(int n){
-		
-		long a = 1;
+		//initialize both a and b
+		long a = 1; 
 		long b = 1;
-		
+		//for loop to keep multiplying both numerator and denominator n (given) times 
 		for (int i = 0; i < n; i++) {
-        	a *= num;
+        	a *= num; 
         	b *= denom;
     	}
-		return new Fraction(a,b);
+		return new Fraction(a,b); //returns new fraction raised to the nth power
 	} 
-
+	//main method
 	public static void main(String[] args) { 
-		Fraction a = new Fraction(6,-24);
-		Fraction b = new Fraction( 0,8 );
-		System.out.println(a);
-		System.out.println(b);
+		Fraction a = new Fraction(6,-24); //for task 1 this outputs fractions reduced and normalized given the above constructor is correct 
+		Fraction b = new Fraction( 0,8 ); //same as above, should return a reduce & normalized fraction
+		System.out.println(a); //prints a fraction
+		System.out.println(b); //prints b fraction
 
-		Fraction c = new Fraction(8, -6);
-		System.out.println(c);
+		Fraction c = new Fraction(8, -6); //for task 2 fraction should produce a negative fraction
+		System.out.println(c); // prints results
 
-		Fraction d = new Fraction(23, 0);
-		System.out.println(d);
+		Fraction d = new Fraction(23, 0); //for task 2 fraction should produce the infinity output due to a regular numerator and 0 denom
+		System.out.println(d); // prints results
 
-		Fraction e = new Fraction(-6, 0);
-		System.out.println(e);
+		Fraction e = new Fraction(-6, 0); //for task 2 fraction should produce the -infinity output due to a - numerator and a 0 denom
+		System.out.println(e); // prints results
 
-		Fraction f = new Fraction(7, 1);
-		System.out.println(f);
+		Fraction f = new Fraction(7, 1); //for task 2 fraction should produce a whole number output due to a 1 in the denom
+		System.out.println(f); // prints results
 
-		Fraction g = new Fraction(0, 0);
-		System.out.println(g);
+		Fraction g = new Fraction(0, 0); //for task 2 fraction should produce the NaN output due to a 0/0
+		System.out.println(g); // prints results
 
-		Fraction o = new Fraction(1,2).pow(2);
-		System.out.println(o);
+		Fraction o = new Fraction(1,2).pow(2); //for task 3 should produce a fraction raised to the given power
+		System.out.println(o); // prints results
 
-		Fraction s = new Fraction(1,2).negate(new Fraction (1));
-		System.out.println(s);
+		Fraction s = new Fraction(1,2).negate(new Fraction (1)); //for task 3 should produce a fraction negated
+		System.out.println(s); // prints results
 
-		Fraction h = new Fraction(16);
-		Fraction i = new Fraction(3,5).add(new Fraction(7));
-		Fraction j = new Fraction(6,7);
-		Fraction results = j.multiply(h.divide(i));
-		System.out.println(results);
+		Fraction h = new Fraction(16); //creates a fraction out of a whole number
+		Fraction i = new Fraction(3,5).add(new Fraction(7)); //creates a fraction and adds a whole number to it
+		Fraction j = new Fraction(6,7); //new fraction
+		Fraction results = j.multiply(h.divide(i)); //multiplies new fraction j by h/i
+		System.out.println(results); //prints the results of that multiplication
 
-		Fraction t = new Fraction(3,5).subtract(new Fraction(7));
-		System.out.println(t);
+		Fraction t = new Fraction(3,5).subtract(new Fraction(7)); //for task 3 should take fraction and subtract whole number from it
+		System.out.println(t); // prints results
 	}
 }
 
