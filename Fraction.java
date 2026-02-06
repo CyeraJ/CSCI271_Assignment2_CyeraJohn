@@ -132,11 +132,14 @@ public class Fraction { /* obtained from course notes */
 	}
 
 	public Fraction pow(int n){
-		n = (int) num;
+		
 		long a = 1;
 		long b = 1;
-		a = a *= num;
-		b = b *= denom;
+		
+		for (int i = 0; i < n; i++) {
+        	a *= num;
+        	b *= denom;
+    	}
 		return new Fraction(a,b);
 	} 
 
